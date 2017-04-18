@@ -6,7 +6,7 @@
     <div id="error_explanation">
       <ul>
         
-<% task.errors.full_tasks.each do |task| %>
+<% task.errors.full_messages.each do |task| %>
 
           <li>
 <%= task %>
@@ -20,10 +20,10 @@
 <% end %>
 
 
-<%= f.label :title, 'タイトル' %>
+<%= f.label :status, 'ステータス' %>
 
   
-<%= f.text_field :title %
+<%= f.text_field :status %>
 
   
 <%= f.label :content, 'タスク' %>
