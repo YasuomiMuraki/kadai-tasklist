@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 class UsersController < ApplicationController
   before_action :require_user_logged_in, only: [:index, :show]
   def index
@@ -5,6 +6,9 @@ class UsersController < ApplicationController
   end
 
   def show
+    @user = User.find(params[:id])
+    @tisks = @user.tisks.order('created_at DESC').page(params[:page])
+    counts @user
   end
 
   def new

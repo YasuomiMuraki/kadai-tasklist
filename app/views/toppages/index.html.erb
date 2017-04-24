@@ -1,8 +1,34 @@
 <% if logged_in? %>
 
-  <p>ログイン完了ユーザ: 
-<%= current_user.name %>
-</p>
+  <div class="row">
+    <aside class="col-md-4">
+      
+<%= form_for(@tisk) do |f| %>
+
+        <div class="form-group">
+          <%= f.label :content, 'タスク' %>
+<%= f.text_field :content, class: 'form-control', rows: 1 %>
+
+        </div>
+
+ <div class="form-group">
+          <%= f.label :status, 'ステータス' %>
+<%= f.text_field :status, class: 'form-control', rows: 1 %>
+
+        </div>        
+        
+<%= f.submit 'Post', class: 'btn btn-primary btn-block' %>
+
+      
+<% end %>
+
+    </aside>
+    <div class="col-xs-8">
+      
+<%= render 'tisks/tisks', tisks: @tisks, user: @user %>
+
+    </div>
+  </div>
 <% else %>
 
 <div class="center jumbotron">
